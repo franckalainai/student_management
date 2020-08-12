@@ -54,18 +54,18 @@
 {{----------------------}}
 <li class="treeview">
     <a href="#">
-        <i class="fa fa-dashboard"></i><span>Schedule</span>
+        <i class="fa fa-clock-o"></i><span>Schedule</span>
     <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
     </span>
     </a>
     <ul class="treeview-menu">
         <li class="{{ Request::is('classAssignings*') ? 'active' : '' }}">
-            <a href="{{ route('classAssignings.index') }}"><i class="fa fa-edit"></i><span>Class Assignings</span></a>
+            <a href="{{ route('classAssignings.index') }}"><i class="fa fa-users"></i><span>Class Assignings</span></a>
         </li>
 
         <li class="{{ Request::is('classSchedulings*') ? 'active' : '' }}">
-            <a href="{{ route('classSchedulings.index') }}"><i class="fa fa-edit"></i><span>Class Schedulings</span></a>
+            <a href="{{ route('classSchedulings.index') }}"><i class="fa fa-address-book-o"></i><span>Class Schedulings</span></a>
         </li>
     </ul>
 </li>
@@ -84,7 +84,7 @@
 </li>
 
 <li class="{{ Request::is('roles*') ? 'active' : '' }}">
-    <a href="{{ route('roles.index') }}"><i class="fa fa-edit"></i><span>Roles</span></a>
+    <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
 </li>
 
 <li class="{{ Request::is('users*') ? 'active' : '' }}">

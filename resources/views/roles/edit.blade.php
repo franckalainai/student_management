@@ -11,12 +11,19 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'patch']) !!}
+                   {!! Form::model($role, ['route' => ['roles.update', $role->role_id], 'method' => 'patch']) !!}
+                   <div class="form-group col-md-6">
+                    {!! Form::label('name', 'Name:') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+                    </div>
+                </div>
 
-                        @include('roles.fields')
-
+                    <div>
+                    {!! Form::submit('Update Role', ['class' => 'btn btn-info']) !!}
+                    <a href="{{ route('roles.index') }}" class="btn btn-warning">Close</a>
+                    </div>
                    {!! Form::close() !!}
-               </div>
+                </div>
            </div>
        </div>
    </div>
