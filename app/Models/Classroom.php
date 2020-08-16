@@ -20,7 +20,9 @@ class Classroom extends Model
     use SoftDeletes;
 
     public $table = 'classrooms';
-    
+
+    protected $primaryKey = 'classroom_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -44,7 +46,7 @@ class Classroom extends Model
     protected $casts = [
         'classroom_id' => 'integer',
         'classroom_name' => 'string',
-        'classroom_code' => 'integer',
+        'classroom_code' => 'text',
         'classroom_description' => 'string',
         'classroom_status' => 'boolean'
     ];
@@ -56,7 +58,7 @@ class Classroom extends Model
      */
     public static $rules = [
         'classroom_name' => 'required|string|max:255',
-        'classroom_code' => 'required|integer',
+        'classroom_code' => 'required|string',
         'classroom_description' => 'required|string',
         'classroom_status' => 'required|boolean',
         'deleted_at' => 'nullable',
@@ -64,5 +66,5 @@ class Classroom extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

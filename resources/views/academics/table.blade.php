@@ -11,10 +11,10 @@
             <tr>
                 <td>{{ $academic->academic_year }}</td>
                 <td>
-                    {!! Form::open(['route' => ['academics.destroy', $academic->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['academics.destroy', $academic->academic_id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('academics.show', [$academic->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('academics.edit', [$academic->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{{ route('academics.show', [$academic->academic_id]) }}" class='btn btn-warning btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('academics.edit', [$academic->academic_id]) }}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

@@ -4,6 +4,11 @@
     <p>{{ $classScheduling->course_id }}</p>
 </div>
 
+<div class="form-group">
+    {!! Form::label('class_id', 'Class Id:') !!}
+    <p>{{ $classScheduling->class_id }}</p>
+</div>
+
 <!-- Level Id Field -->
 <div class="form-group">
     {!! Form::label('level_id', 'Level Id:') !!}

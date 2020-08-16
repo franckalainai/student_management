@@ -9,7 +9,7 @@
         <tbody>
         @foreach($roles as $role)
             <tr>
-                <td>{{ $role->name }}</td>
+                <td>{{ $role->role_name }}</td>
                 <td>
                     {!! Form::open(['route' => ['roles.destroy', $role->role_id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

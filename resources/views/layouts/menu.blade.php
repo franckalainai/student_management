@@ -47,6 +47,10 @@
             <a href="{{ route('days.index') }}"><i class="fa fa-edit"></i><span>Days</span></a>
         </li>
 
+        <li class="{{ Request::is('semesters*') ? 'active' : '' }}">
+            <a href="{{ route('semesters.index') }}"><i class="fa fa-edit"></i><span>Semesters</span></a>
+        </li>
+
     </ul>
 </li>
 
@@ -70,7 +74,6 @@
     </ul>
 </li>
 
-
     <li class="{{ Request::is('admisions*') ? 'active' : '' }}">
         <a href="{{ route('admisions.index') }}"><i class="fa fa-graduation-cap"></i><span>Admisions</span></a>
     </li>
@@ -78,19 +81,22 @@
     <li class="{{ Request::is('teachers*') ? 'active' : '' }}">
         <a href="{{ route('teachers.index') }}"><i class="fa fa-user-circle"></i><span>Teachers</span></a>
     </li>
+    @if(auth::user()->role_id < 1)
+        <li class="{{ Request::is('attendances*') ? 'active' : '' }}">
+            <a href="{{ route('attendances.index') }}"><i class="fa fa-calendar"></i><span>Attendances</span></a>
+        </li>
+    @endif
 
-<li class="{{ Request::is('attendances*') ? 'active' : '' }}">
-    <a href="{{ route('attendances.index') }}"><i class="fa fa-calendar"></i><span>Attendances</span></a>
-</li>
+    <li class="{{ Request::is('roles*') ? 'active' : '' }}">
+        <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
+    </li>
 
-<li class="{{ Request::is('roles*') ? 'active' : '' }}">
-    <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
-</li>
+    <li class="{{ Request::is('users*') ? 'active' : '' }}">
+        <a href="{{ route('users.index') }}"><i class="fa fa-user"></i><span>Users</span></a>
+    </li>
+    @if(auth::user()->role_id < 2)
+        <li class="{{ Request::is('transactions*') ? 'active' : '' }}">
+            <a href="{{ route('transactions.index') }}"><i class="fa fa-money"></i><span>Transactions</span></a>
+        </li>
+    @endif
 
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{{ route('users.index') }}"><i class="fa fa-user"></i><span>Users</span></a>
-</li>
-
-<li class="{{ Request::is('transactions*') ? 'active' : '' }}">
-    <a href="{{ route('transactions.index') }}"><i class="fa fa-money"></i><span>Transactions</span></a>
-</li>

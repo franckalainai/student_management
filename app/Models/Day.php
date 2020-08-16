@@ -17,7 +17,9 @@ class Day extends Model
     use SoftDeletes;
 
     public $table = 'days';
-    
+
+    protected $primaryKey = 'day_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -52,5 +54,5 @@ class Day extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

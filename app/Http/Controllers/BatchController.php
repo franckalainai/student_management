@@ -29,10 +29,10 @@ class BatchController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $batches = $this->batchRepository->all();
+        $batch = $this->batchRepository->all();
 
-        return view('batches.index')
-            ->with('batches', $batches);
+        return view('batches.index', compact('batch'))
+            ->with('batches', $batch);
     }
 
     /**

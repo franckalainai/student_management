@@ -19,7 +19,9 @@ class Level extends Model
     use SoftDeletes;
 
     public $table = 'levels';
-    
+
+    protected $primaryKey = 'level_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -60,5 +62,9 @@ class Level extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
+
 }

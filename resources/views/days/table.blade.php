@@ -11,10 +11,10 @@
             <tr>
                 <td>{{ $day->name }}</td>
                 <td>
-                    {!! Form::open(['route' => ['days.destroy', $day->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['days.destroy', $day->day_id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('days.show', [$day->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('days.edit', [$day->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{{ route('days.show', [$day->day_id]) }}" class='btn btn-warning btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('days.edit', [$day->day_id]) }}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

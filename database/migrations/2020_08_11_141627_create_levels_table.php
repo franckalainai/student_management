@@ -17,10 +17,17 @@ class CreateLevelsTable extends Migration
             $table->bigIncrements('level_id');
             $table->string('level');
             $table->integer('course_id')->unsigned();
+            //$table->foreign('course_id')->references('id')->on('courses');
             $table->longText('level_description');
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints('levels', function (Blueprint $table){
+            $table->foreign('course_id')
+            ->references('id')
+            ->on('courses');
+            });
     }
 
     /**

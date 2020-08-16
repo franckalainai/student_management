@@ -11,7 +11,7 @@
                     <!-- Name Field -->
                     <div class="form-group">
                         {!! Form::label('name', 'Name:') !!}
-                        {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+                        {!! Form::text('role_name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
                     </div>
                 </div>
 

@@ -12,14 +12,14 @@
         <tbody>
         @foreach($courses as $course)
             <tr>
-                <td>{{ $course->course_name }}</td>
+            <td>{{ $course->course_name }}</td>
             <td>{{ $course->course_code }}</td>
             <td>{{ $course->description }}</td>
             <td>
-                @if($course->status = 1)
-                <span class="badge badge-pill badge-success">Active</span>
+                @if($course->status == 1)
+                    <span class="badge badge-pill badge-success">Active</span>
                 @else
-                <span class="badge  badge-pill badge-danger">Inactive</span>
+                    <span class="badge  badge-pill badge-danger">Inactive</span>
                 @endif
 
             </td>

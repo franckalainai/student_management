@@ -17,7 +17,9 @@ class Shift extends Model
     use SoftDeletes;
 
     public $table = 'shifts';
-    
+
+    protected $primaryKey = 'shift_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -52,5 +54,5 @@ class Shift extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

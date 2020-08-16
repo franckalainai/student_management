@@ -16,8 +16,10 @@ class Academic extends Model
 {
     use SoftDeletes;
 
+    protected $primaryKey = 'academic_id';
+
     public $table = 'academics';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -52,5 +54,5 @@ class Academic extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

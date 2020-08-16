@@ -15,6 +15,8 @@ class DayController extends AppBaseController
     /** @var  DayRepository */
     private $dayRepository;
 
+    protected $primaryKey = 'day_id';
+
     public function __construct(DayRepository $dayRepo)
     {
         $this->dayRepository = $dayRepo;

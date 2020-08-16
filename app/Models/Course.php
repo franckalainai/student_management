@@ -66,5 +66,10 @@ class Course extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function level()
+    {
+        return $this->hasMany('App\Models\Level');
+    }
+
 
 }

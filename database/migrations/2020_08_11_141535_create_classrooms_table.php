@@ -16,7 +16,7 @@ class CreateClassroomsTable extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->bigIncrements('classroom_id');
             $table->string('classroom_name');
-            $table->integer('classroom_code');
+            $table->text('classroom_code');
             $table->text('classroom_description');
             $table->tinyInteger('classroom_status')->default(1);
             $table->softDeletes();

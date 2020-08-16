@@ -29,7 +29,7 @@ class Role extends Model
 
 
     public $fillable = [
-        'name'
+        'role_name'
     ];
 
     /**
@@ -39,7 +39,7 @@ class Role extends Model
      */
     protected $casts = [
         'role_id' => 'integer',
-        'name' => 'string'
+        'role_name' => 'string'
     ];
 
     /**
@@ -48,11 +48,16 @@ class Role extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string|max:255',
+        'role_name' => 'required|string|max:255',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
+
+    public function user()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 
 
 }

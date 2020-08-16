@@ -16,8 +16,10 @@ class Batch extends Model
 {
     use SoftDeletes;
 
+    protected $primaryKey = 'batch_id';
+
     public $table = 'batches';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -27,7 +29,7 @@ class Batch extends Model
 
 
     public $fillable = [
-        'batch'
+        'year'
     ];
 
     /**
@@ -37,7 +39,7 @@ class Batch extends Model
      */
     protected $casts = [
         'batch_id' => 'integer',
-        'batch' => 'string'
+        'year' => 'string'
     ];
 
     /**
@@ -46,11 +48,11 @@ class Batch extends Model
      * @var array
      */
     public static $rules = [
-        'batch' => 'required|string|max:255',
+        'year' => 'required|string|max:255',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

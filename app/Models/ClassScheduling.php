@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version August 11, 2020, 8:55 pm UTC
  *
  * @property integer $course_id
+ * @property integer $class_id
  * @property integer $level_id
  * @property integer $shift_id
  * @property integer $classroom_id
@@ -28,7 +29,9 @@ class ClassScheduling extends Model
     use SoftDeletes;
 
     public $table = 'class_schedulings';
-    
+
+    protected $primaryKey = 'schedule_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -39,16 +42,16 @@ class ClassScheduling extends Model
 
     public $fillable = [
         'course_id',
+        'class_id',
         'level_id',
         'shift_id',
         'classroom_id',
         'batch_id',
         'day_id',
         'time_id',
-        'teacher_id',
         'semester_id',
-        'start_time',
-        'end_time',
+        'start_date',
+        'end_date',
         'status'
     ];
 
@@ -60,13 +63,13 @@ class ClassScheduling extends Model
     protected $casts = [
         'schedule_id' => 'integer',
         'course_id' => 'integer',
+        'class_id' => 'integer',
         'level_id' => 'integer',
         'shift_id' => 'integer',
         'classroom_id' => 'integer',
         'batch_id' => 'integer',
         'day_id' => 'integer',
         'time_id' => 'integer',
-        'teacher_id' => 'integer',
         'semester_id' => 'integer',
         'status' => 'boolean'
     ];
@@ -78,21 +81,21 @@ class ClassScheduling extends Model
      */
     public static $rules = [
         'course_id' => 'required|integer',
+        'class_id' => 'required|integer',
         'level_id' => 'required|integer',
         'shift_id' => 'required|integer',
         'classroom_id' => 'required|integer',
         'batch_id' => 'required|integer',
         'day_id' => 'required|integer',
         'time_id' => 'required|integer',
-        'teacher_id' => 'required|integer',
         'semester_id' => 'required|integer',
-        'start_time' => 'required',
-        'end_time' => 'required',
+        'start_date' => 'required',
+        'end_date' => 'required',
         'status' => 'required|boolean',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

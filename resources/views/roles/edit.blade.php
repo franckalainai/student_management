@@ -14,7 +14,7 @@
                    {!! Form::model($role, ['route' => ['roles.update', $role->role_id], 'method' => 'patch']) !!}
                    <div class="form-group col-md-6">
                     {!! Form::label('name', 'Name:') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+                    {!! Form::text('role_name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
                     </div>
                 </div>
 
