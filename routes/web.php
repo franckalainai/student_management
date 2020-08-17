@@ -59,4 +59,4 @@ Route::resource('users', 'UserController');
 
 Route::resource('semesters', 'semestersController');
 
-Route::get('/dynamiclevel', ['as' => 'dynamicLevel', 'uses' => 'ClassSchedulingController@DynamicLevel']);
+Route::get('/dynamicLevel', ['as' => 'dynamicLevel', 'uses' => 'ClassSchedulingController@DynamicLevel']);

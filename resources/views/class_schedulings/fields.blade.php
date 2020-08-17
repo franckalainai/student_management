@@ -107,16 +107,16 @@
             <input type="text" class="form-control" name="start_date" id="start_date">
     </div>
 
-    <!--
-    @section('scripts')
+
+    @push('scripts')
         <script type='text/javascript'>
             $('#start_date').datetimepicker({
                 format: 'YYYY-MM-DD',
                 useCurrent: false
             })
         </script>
-    @endsection
-    -->
+    @endpush
+
 
     <!-- End Time Field -->
     <div class="form-group col-sm-6">
@@ -126,7 +126,7 @@
 
 
 
-   <!-- @section('scripts')
+ @push('scripts')
     <script type='text/javascript'>
         $('#end_date').datetimepicker({
             format: 'YYYY-MM-DD',
@@ -134,8 +134,8 @@
         });
 
     </script>
-    @endsection
-    -->
+    @endpush
+
 
     @push('scripts')
         <script type="text/javascript">
@@ -145,7 +145,7 @@
                 var course_id = e.target.value;
 
                 $('#level_id').empty();
-                $.get('dynamiclevel?course_id=' + course_id, function(data){
+                $.get('dynamicLevel?course_id=' + course_id, function(data){
                     console.log(data);
                 })
             })
