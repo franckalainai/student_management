@@ -26,6 +26,7 @@
                 @foreach ($class as $cla)
                     <option value="{{$cla->class_id}}">{{$cla->class_name}}</option>
                 @endforeach
+
         </select>
     </div>
 
@@ -33,9 +34,10 @@
     <div class="form-group col-sm-4">
         <select class="form-control" name="level_id" id="level_id">
             <option value="">Select Level</option>
-            @foreach ($level as $l)
-            <option value="{{$l->level_id}}">{{$l->level}}</option>
-        @endforeach
+                <!--@foreach ($level as $l)
+                    <option value="{{$l->level_id}}">{{$l->level}}</option>
+                @endforeach
+                -->
         </select>
     </div>
 
@@ -105,6 +107,7 @@
             <input type="text" class="form-control" name="start_date" id="start_date">
     </div>
 
+    <!--
     @section('scripts')
         <script type='text/javascript'>
             $('#start_date').datetimepicker({
@@ -113,6 +116,7 @@
             })
         </script>
     @endsection
+    -->
 
     <!-- End Time Field -->
     <div class="form-group col-sm-6">
@@ -122,14 +126,31 @@
 
 
 
-@section('scripts')
-<script type='text/javascript'>
-    $('#end_date').datetimepicker({
-        format: 'YYYY-MM-DD',
-        useCurrent: false
-    })
-</script>
-@endsection
+   <!-- @section('scripts')
+    <script type='text/javascript'>
+        $('#end_date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            useCurrent: false
+        });
+
+    </script>
+    @endsection
+    -->
+
+    @section('scripts')
+        <script type="text/javascript">
+             $('#course_id').on('change', function(e){
+                console.log(e);
+
+                var course_id = e.target.value;
+
+                $('#level_id').empty();
+                $.get('dynamiclevel?course_id=' + course_id, function(data){
+                    console.log(data);
+                })
+            })
+        </script>
+    @endsection
 
 </div>
 <!-- End row -->

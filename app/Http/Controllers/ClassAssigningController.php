@@ -153,4 +153,12 @@ class ClassAssigningController extends AppBaseController
 
         return redirect(route('classAssignings.index'));
     }
+
+    public function DynamicLevel(Request $request){
+
+        $course_id = $request->get('course_id');
+
+        $levels = Level::where('course_id', '=', $course_id)->get();
+        return Response::json($levels);
+    }
 }
