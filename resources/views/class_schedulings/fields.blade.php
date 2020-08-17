@@ -137,7 +137,7 @@
     @endsection
     -->
 
-    @section('scripts')
+    @push('scripts')
         <script type="text/javascript">
              $('#course_id').on('change', function(e){
                 console.log(e);
@@ -150,7 +150,7 @@
                 })
             })
         </script>
-    @endsection
+    @endpush
 
 </div>
 <!-- End row -->
