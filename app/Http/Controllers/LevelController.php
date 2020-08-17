@@ -163,4 +163,13 @@ class LevelController extends AppBaseController
 
         return redirect(route('levels.index'));
     }
+
+    public function DynamicCourse(Request $request){
+        $level_id = $request->get('level_id');
+        $courses = Course::where('level_id', '=', $level_id)->get();
+
+        return Response::json($courses);
+
+    }
+
 }
