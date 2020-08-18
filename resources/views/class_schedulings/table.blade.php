@@ -2,7 +2,7 @@
     <table class="table" id="classSchedulings-table">
         <thead>
             <tr>
-                <th>Course Name</th>
+                <th>Course Names</th>
                 <th>Class Name</th>
                 <th>Level </th>
                 <th>Shift </th>
