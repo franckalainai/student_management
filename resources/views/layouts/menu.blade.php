@@ -82,10 +82,12 @@
         <a href="{{ route('teachers.index') }}"><i class="fa fa-user-circle"></i><span>Teachers</span></a>
     </li>
     @if(auth::user()->role_id < 1)
+
+    @endif
         <li class="{{ Request::is('attendances*') ? 'active' : '' }}">
             <a href="{{ route('attendances.index') }}"><i class="fa fa-calendar"></i><span>Attendances</span></a>
         </li>
-    @endif
+
 
     <li class="{{ Request::is('roles*') ? 'active' : '' }}">
         <a href="{{ route('roles.index') }}"><i class="fa fa-tasks"></i><span>Roles</span></a>
@@ -95,8 +97,10 @@
         <a href="{{ route('users.index') }}"><i class="fa fa-user"></i><span>Users</span></a>
     </li>
     @if(auth::user()->role_id < 2)
+
+    @endif
         <li class="{{ Request::is('transactions*') ? 'active' : '' }}">
             <a href="{{ route('transactions.index') }}"><i class="fa fa-money"></i><span>Transactions</span></a>
         </li>
-    @endif
+
 
