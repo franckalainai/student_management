@@ -9,36 +9,45 @@
         </div>
         <div class="modal-body">
 
-<!-- Level Field -->
+            <!-- Level Field -->
 
-<div class="form-group col-sm-6">
-    {!! Form::label('level', 'Level:') !!}
-    {!! Form::text('level', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
+            <div class="form-group col-md-6">
+                {!! Form::label('level', 'Level:') !!}
+                {!! Form::text('level', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+            </div>
 
-
-<!-- Course Id Field -->
-
-<div class="form-group col-sm-6">
-{!! Form::label('course_id', 'Course ID:') !!}
-    {!! Form::number('course_id', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
-</div>
-
-<!-- Level Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('level_description', 'Level Description:') !!}
-    {!! Form::textarea('level_description', null, ['class' => 'form-control']) !!}
-</div>
+            <div class="form-group col-md-6">
+                {!! Form::label('course_id', 'Course ID:') !!}
+                {!! Form::number('course_id', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+            </div>
 
 
+            <!-- Course Id Field
 
-</div>
-<div class="modal-footer">
-    <a href="{{ route('levels.index') }}" class="btn btn-warning">Close</a>
-    {!! Form::submit('Create Level', ['class' => 'btn btn-success']) !!}
-</div>
-</div>
-</div>
+            <div class="form-group col-md-6">
+            <select class="form-control" name="course_id" id="course_id">
+            <option value="">Select Course</option>
+                @foreach($course as $cour)
+                    <option value="{{$cour->course_id}}">{{$cour->course_name}}</option>
+                @endforeach
+                </select>
+
+            </div>
+            -->
+
+            <!-- Level Description Field -->
+            <div class="form-group col-sm-12 col-lg-12">
+                {!! Form::label('level_description', 'Level Description:') !!}
+                {!! Form::textarea('level_description', null, ['class' => 'form-control']) !!}
+            </div>
+
+        </div>
+            <div class="modal-footer">
+                <a href="{{ route('levels.index') }}" class="btn btn-warning">Close</a>
+                {!! Form::submit('Create Level', ['class' => 'btn btn-success']) !!}
+            </div>
+        </div>
+    </div>
 </div>
 
 
