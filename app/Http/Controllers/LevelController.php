@@ -42,6 +42,7 @@ class LevelController extends AppBaseController
             ->join('courses', 'courses.course_id', '=', 'levels.course_id')
             ->get();
 
+
         return view('levels.index', compact('courselevel','course'))
             ->with('levels', $levels);
     }

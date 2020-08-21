@@ -10,6 +10,7 @@
         </thead>
         <tbody>
         @foreach($courselevel as $level)
+        {{--@foreach($levels as $level)--}}
             <tr>
                 <td>{{ $level->level }}</td>
                 <td>{{ $level->course_name }}</td>
