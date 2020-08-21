@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.add_level')
 
 @section('content')
     <section class="content-header">

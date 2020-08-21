@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\Course;
+use App\Models\Level;
 use DB;
 
 class LevelController extends AppBaseController
@@ -166,9 +167,9 @@ class LevelController extends AppBaseController
 
     public function DynamicCourse(Request $request){
         $level_id = $request->get('level_id');
-        $courses = Course::where('level_id', '=', $level_id)->get();
+        $level = Level::where('level_id', '=', $level_id)->first();
 
-        return Response::json($courses);
+        return Response::json($level->course);
 
     }
 

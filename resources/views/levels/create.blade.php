@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
     <section class="content-header">
         <h1>
             Level
@@ -12,6 +18,7 @@
             <div class="box-body">
                 <div class="row">
                     {!! Form::open(['route' => 'levels.store']) !!}
+
 
                         @include('levels.fields')
 
