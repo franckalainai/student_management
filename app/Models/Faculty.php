@@ -20,7 +20,9 @@ class Faculty extends Model
     use SoftDeletes;
 
     public $table = 'faculties';
-    
+
+    protected $primaryKey = "faculty_id";
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -64,5 +66,5 @@ class Faculty extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

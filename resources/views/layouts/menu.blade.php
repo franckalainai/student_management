@@ -31,6 +31,10 @@
             <a href="{{ route('courses.index') }}"><i class="fa fa-edit"></i><span>Courses</span></a>
         </li>
 
+        <li class="{{ Request::is('departments*') ? 'active' : '' }}">
+            <a href="{{ route('departments.index') }}"><i class="fa fa-edit"></i><span>Departments</span></a>
+        </li>
+
         <li class="{{ Request::is('faculties*') ? 'active' : '' }}">
             <a href="{{ route('faculties.index') }}"><i class="fa fa-edit"></i><span>Faculties</span></a>
         </li>
@@ -102,5 +106,6 @@
         <li class="{{ Request::is('transactions*') ? 'active' : '' }}">
             <a href="{{ route('transactions.index') }}"><i class="fa fa-money"></i><span>Transactions</span></a>
         </li>
+
 
 

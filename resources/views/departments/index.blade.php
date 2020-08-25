@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Courses</h1>
+        <h1 class="pull-left">Departments</h1>
         <h1 class="pull-right">
-           <a data-toggle="modal" data-target="#add-course-modal" class="btn btn-success pull-right" style="margin-top: -10px;margin-bottom: 5px"><i class="fa fa-plus-circle"> Add New Course</i></a>
+           <a data-toggle="modal" data-target="#add-department-modal" class="btn btn-success pull-right" style="margin-top: -10px;margin-bottom: 5px"><i class="fa fa-plus-circle"> Add New Department</i></a>
         </h1>
     </section>
     <div class="content">
@@ -17,11 +17,11 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    @include('courses.table')
+                    @include('departments.table')
 
-                    {!! Form::open(['route' => 'courses.store']) !!}
+                    {!! Form::open(['route' => 'departments.store']) !!}
 
-                    @include('courses.fields')
+                    @include('departments.fields')
 
                     {!! Form::close() !!}
             </div>
@@ -31,3 +31,4 @@
         </div>
     </div>
 @endsection
+
