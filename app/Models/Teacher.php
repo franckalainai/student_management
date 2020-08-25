@@ -29,7 +29,9 @@ class Teacher extends Model
     use SoftDeletes;
 
     public $table = 'teachers';
-    
+
+    protected $primaryKey = 'teacher_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -93,12 +95,11 @@ class Teacher extends Model
         'passport' => 'required|string|max:255',
         'status' => 'required|boolean',
         'dateregistered' => 'required',
-        'user_id' => 'required|integer',
         'image' => 'nullable|string|max:255',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

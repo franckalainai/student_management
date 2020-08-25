@@ -26,11 +26,6 @@
                                     <input type="text" name="last_name" id="last_name" class="form-control text-capitalize" placeholder="Last Name">
                                 </div>
 
-                                <div class="form-group col-sm-6">
-                                    <i class="fa fa-id-badge" aria-hidden="true"></i>
-                                    <input type="number" name="user_id" id="user_id" class="form-control text-capitalize" placeholder="User ID">
-                                </div>
-
                                 <!-- Email Field -->
                                 <div class="form-group col-md-6">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -43,10 +38,10 @@
                                     <input type="text" name="phone" id="phone" class="form-control text-capitalize" placeholder="Phone">
                                 </div>
 
-                                <!-- Address Field -->
+
                                 <div class="form-group col-md-6">
-                                    <i class="fa fa-map-marker"></i>
-                                        <textarea name="address" id="address" class="form-control text-capitalize" cols="40" rows="1" placeholder="Address"></textarea>
+                                    <i class="fa fa-calendar teacherdob"></i>
+                                    <input type="text" name="dob" id="dob" class="form-control text-capitalize" placeholder="Date Of Birth">
                                 </div>
 
                                 <!-- Nationality Field -->
@@ -70,9 +65,16 @@
 
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <i class="fa fa-calendar teacherdob"></i>
-                                    <input type="text" name="dob" id="dob" class="form-control text-capitalize" placeholder="Date Of Birth">
+
+                                <!-- Address Field -->
+                                <div class="form-group col-md-12">
+                                    <i class="fa fa-map-marker"></i>
+                                        <textarea name="address" id="address" class="form-control text-capitalize" cols="40" rows="2" placeholder="Address"></textarea>
+                                </div>
+
+
+                                <div class="form-group col-sm-6">
+                                    <input type="hidden" value="{{Auth::id()}}" name="user_id" id="user_id" class="form-control text-capitalize" placeholder="User ID">
                                 </div>
 
                         </div>
