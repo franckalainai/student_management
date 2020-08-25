@@ -95,7 +95,7 @@ class Teacher extends Model
         'passport' => 'required|string|max:255',
         'status' => 'required|boolean',
         'dateregistered' => 'required',
-        'image' => 'nullable|string|max:255',
+        'image' => 'nullable',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

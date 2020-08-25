@@ -19,11 +19,11 @@
             <div class="box-body">
                     @include('teachers.table')
 
-                    {!! Form::open(['route' => 'teachers.store']) !!}
+                    <form action="{{route('teachers.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @include('teachers.fields')
 
-                    @include('teachers.fields')
-
-                    {!! Form::close() !!}
+                    </form>
             </div>
         </div>
         <div class="text-center">

@@ -36,7 +36,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>Student Management</b>
+                <b>Student MS</b>
             </a>
 
             <!-- Header Navbar -->

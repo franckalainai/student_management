@@ -242,6 +242,11 @@
         'useCurrent': false
     })
 
+    $('#dateregistered').datetimepicker({
+        'format': 'YYYY-MM-DD',
+        'useCurrent': false
+    })
+
     $('#browse_file').on('click', function(){
         $('#image').click();
     })

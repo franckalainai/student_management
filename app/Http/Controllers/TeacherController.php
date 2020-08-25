@@ -8,6 +8,7 @@ use App\Repositories\TeacherRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use App\Models\Teacher;
 use Response;
 
 class TeacherController extends AppBaseController
@@ -56,7 +57,30 @@ class TeacherController extends AppBaseController
     {
         $input = $request->all();
 
-        $teacher = $this->teacherRepository->create($input);
+        //$teacher = $this->teacherRepository->create($input);
+        $image = $request->file('image');
+        $image_name = rand(1111, 9999) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('teacher_images'), $image_name);
+
+        $teacher = new Teacher;
+
+        $teacher->first_name = $request->first_name;
+        $teacher->last_name = $request->last_name;
+        $teacher->gender = $request->gender;
+        $teacher->email = $request->email;
+        $teacher->dob = $request->dob;
+        $teacher->phone = $request->phone;
+        $teacher->address = $request->address;
+        $teacher->nationality = $request->nationality;
+        $teacher->passport = $request->passport;
+        $teacher->status = $request->status;
+        $teacher->dateregistered = $request->dateregistered;
+        $teacher->user_id = $request->user_id;
+        $teacher->image = $image_name;
+
+        $teacher->save();
+
+        //dd($teacher); die;
 
         Flash::success('Teacher saved successfully.');
 
