@@ -9,6 +9,11 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Department;
+use App\Models\Admision;
+use App\Models\Faculty;
+use App\Models\Batch;
+use App\Roll;
 
 class AdmisionController extends AppBaseController
 {
@@ -31,7 +36,15 @@ class AdmisionController extends AppBaseController
     {
         $admisions = $this->admisionRepository->all();
 
-        return view('admisions.index')
+        $departments = Department::all();
+
+        $faculties = Faculty::all();
+
+        $student_id = Roll::max('roll_id');
+
+        $batches = Batch::all();
+
+        return view('admisions.index', compact('student_id', $student_id, 'batches', $batches, 'departments', $departments, 'faculties', $faculties))
             ->with('admisions', $admisions);
     }
 
@@ -56,7 +69,34 @@ class AdmisionController extends AppBaseController
     {
         $input = $request->all();
 
-        $admision = $this->admisionRepository->create($input);
+        //$admision = $this->admisionRepository->create($input);
+
+        $image = $request->file('image');
+        $image_name = rand(1111, 9999) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('admissions_images'), $image_name);
+
+        $admision = new Admision;
+
+        $admision->first_name = $request->first_name;
+        $admision->last_name = $request->last_name;
+        $admision->first_name = $request->first_name;
+        $admision->father_name = $request->father_name;
+        $admision->mother_name = $request->mother_name;
+        $admision->gender = $request->gender;
+        $admision->email = $request->email;
+        $admision->dob = $request->dob;
+        $admision->phone = $request->phone;
+        $admision->address = $request->address;
+        $admision->nationality = $request->nationality;
+        $admision->passport = $request->passport;
+        $admision->status = $request->status;
+        $admision->dateregistered = $request->dateregistered;
+
+        $admision->image = $image_name;
+
+        $admision->save();
+
+        //dd($admision); die;
 
         Flash::success('Admision saved successfully.');
 
@@ -94,13 +134,23 @@ class AdmisionController extends AppBaseController
     {
         $admision = $this->admisionRepository->find($id);
 
+        $admisions = $this->admisionRepository->all();
+
+        $departments = Department::all();
+
+        $faculties = Faculty::all();
+
+        $student_id = Roll::max('roll_id');
+
+        $batches = Batch::all();
+
         if (empty($admision)) {
             Flash::error('Admision not found');
 
             return redirect(route('admisions.index'));
         }
 
-        return view('admisions.edit')->with('admision', $admision);
+        return view('admisions.edit', compact('student_id', $student_id, 'batches', $batches, 'departments', $departments, 'faculties', $faculties))->with('admision', $admision);
     }
 
     /**

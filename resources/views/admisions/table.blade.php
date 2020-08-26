@@ -45,12 +45,16 @@
             <td>{{ $admision->dateregistered }}</td>
             <td>{{ $admision->user_id }}</td>
             <td>{{ $admision->class_id }}</td>
-            <td>{{ $admision->image }}</td>
+            <td>
+
+                <img src="{{asset('admissions_images/' . $admision->image)}}"
+                        class="rounded-circle" with="50" height="50" style="border-radius: 50%; vertical-align: middle">
+                </td>
                 <td>
-                    {!! Form::open(['route' => ['admisions.destroy', $admision->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['admisions.destroy', $admision->student_id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('admisions.show', [$admision->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('admisions.edit', [$admision->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{{ route('admisions.show', [$admision->student_id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('admisions.edit', [$admision->student_id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

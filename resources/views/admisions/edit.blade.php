@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($admision, ['route' => ['admisions.update', $admision->id], 'method' => 'patch']) !!}
+                   {!! Form::model($admision, ['route' => ['admisions.update', $admision->student_id], 'method' => 'patch']) !!}
 
                         @include('admisions.fields')
 

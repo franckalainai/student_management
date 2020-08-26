@@ -19,8 +19,8 @@
                             data-created_at="{{ $b->created_at }}"
                             data-updated_at="{{ $b->updated_at }}"
                             --}}
-                            <a href="{{ route('batches.show', [$b->batch_id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('batches.edit', [$b->batch_id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="{{ route('batches.show', [$b->batch_id]) }}" class='btn btn-warning btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('batches.edit', [$b->batch_id]) }}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

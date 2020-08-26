@@ -35,9 +35,11 @@ class Admision extends Model
     use SoftDeletes;
 
     public $table = 'admissions';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    protected $primaryKey = 'student_id';
 
 
     protected $dates = ['deleted_at'];
@@ -45,7 +47,7 @@ class Admision extends Model
 
 
     public $fillable = [
-        'roll_no',
+        'student_id',
         'first_name',
         'last_name',
         'father_name',
@@ -73,7 +75,6 @@ class Admision extends Model
      */
     protected $casts = [
         'student_id' => 'integer',
-        'roll_no' => 'string',
         'first_name' => 'string',
         'last_name' => 'string',
         'father_name' => 'string',
@@ -100,7 +101,6 @@ class Admision extends Model
      * @var array
      */
     public static $rules = [
-        'roll_no' => 'required|string|max:255',
         'first_name' => 'required|string|max:255',
         'last_name' => 'required|string|max:255',
         'father_name' => 'required|string|max:255',
@@ -117,12 +117,12 @@ class Admision extends Model
         'status' => 'required|boolean',
         'dateregistered' => 'required',
         'user_id' => 'required|integer',
-        'class_id' => 'required|integer',
-        'image' => 'nullable|string|max:255',
+        'class_id',
+        'image' => 'nullable',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
 
-    
+
 }

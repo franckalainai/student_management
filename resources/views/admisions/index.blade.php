@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Admisions</h1>
+    <h1 class="pull-left">Admissions</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('admisions.create') }}">Add New</a>
+           <a data-toggle="modal" data-target="#add-admision-modal" class="btn btn-success pull-right" style="margin-top: -10px;margin-bottom: 5px"><i class="fa fa-plus-circle"> Add New Admission</i></a>
         </h1>
     </section>
     <div class="content">
@@ -12,14 +12,21 @@
 
         @include('flash::message')
 
+        @include('adminlte-templates::common.errors')
+
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
                     @include('admisions.table')
+
+                    <form action="{{route('admisions.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @include('admisions.fields')
+                    </form>
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

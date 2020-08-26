@@ -17,7 +17,7 @@ class AdmisionRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'roll_no',
+        'student_id',
         'first_name',
         'last_name',
         'father_name',
@@ -37,6 +37,10 @@ class AdmisionRepository extends BaseRepository
         'class_id',
         'image'
     ];
+
+    protected $primaryKey = 'student_id';
+
+
 
     /**
      * Return searchable fields

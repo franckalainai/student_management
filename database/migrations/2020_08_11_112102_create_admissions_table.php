@@ -15,7 +15,6 @@ class CreateAdmissionsTable extends Migration
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->bigIncrements('student_id');
-            $table->string('roll_no');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('father_name');
