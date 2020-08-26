@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Departments extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,19 @@ class Departments extends Migration
     public function up()
     {
         Schema::create('departments', function (Blueprint $table) {
-            $table->bigIncrements('department_id');
-            $table->integer('faculty_id');
+            $table->increments('department_id');
+            $table->unsignedInteger('faculty_id')->nullable();
             $table->string('department_name');
             $table->string('department_code')->unique();
             $table->longText('department_description');
             $table->tinyInteger('department_status')->default(1);
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('set null');
+
         });
+
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Faculty;
 
 class FacultyController extends AppBaseController
 {
@@ -56,11 +57,19 @@ class FacultyController extends AppBaseController
     {
         $input = $request->all();
 
-        $faculty = $this->facultyRepository->create($input);
+        //$faculty = $this->facultyRepository->create($input);
+
+        $faculty = new Faculty;
+        $faculty->faculty_name = $request->faculty_name;
+        $faculty->faculty_code = $request->faculty_code;
+        $faculty->faculty_description = $request->faculty_description;
+        $faculty->faculty_status = $request->faculty_status;
+
+        $faculty->save();
 
         Flash::success('Faculty saved successfully.');
 
-        return redirect(route('faculties.index'));
+        return redirect(route('faculties.index', compact($faculty)));
     }
 
     /**

@@ -78,6 +78,24 @@
     </ul>
 </li>
 
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-cog"></i><span>Faculty</span>
+    <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+    </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ Request::is('faculties*') ? 'active' : '' }}">
+            <a href="{{ route('faculties.index') }}"><i class="fa fa-graduation-cap"></i><span> Faculties</span></a>
+        </li>
+
+        <li class="{{ Request::is('departments*') ? 'active' : '' }}">
+            <a href="{{ route('departments.index') }}"><i class="fa fa-graduation-cap"></i><span> Departments</span></a>
+        </li>
+    </ul>
+</li>
+
     <li class="{{ Request::is('admisions*') ? 'active' : '' }}">
         <a href="{{ route('admisions.index') }}"><i class="fa fa-graduation-cap"></i><span>Admisions</span></a>
     </li>

@@ -3,16 +3,16 @@
         <thead>
             <tr>
                 <th>Faculty Name</th>
-        <th>Faculty Code</th>
-        <th>Faculty Description</th>
-        <th>Faculty Status</th>
+                <th>Faculty Code</th>
+                <th>Faculty Description</th>
+                <th>Faculty Status</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($faculties as $faculty)
             <tr>
-                <td>{{ $faculty->faculty_name }}</td>
+            <td>{{ $faculty->faculty_name }}</td>
             <td>{{ $faculty->faculty_code }}</td>
             <td>{{ $faculty->faculty_description }}</td>
             <td>@if($faculty->faculty_status == 1)
