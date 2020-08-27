@@ -6,11 +6,13 @@ use App\Http\Requests\CreateDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Repositories\DepartmentRepository;
 use App\Http\Controllers\AppBaseController;
+
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\Department;
 use App\Models\Faculty;
+use App\User;
 
 class DepartmentController extends AppBaseController
 {

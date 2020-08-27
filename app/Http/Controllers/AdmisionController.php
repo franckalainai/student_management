@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\CreateAdmisionRequest;
 use App\Http\Requests\UpdateAdmisionRequest;
 use App\Repositories\AdmisionRepository;
@@ -14,6 +16,7 @@ use App\Models\Admision;
 use App\Models\Faculty;
 use App\Models\Batch;
 use App\Roll;
+
 
 class AdmisionController extends AppBaseController
 {
@@ -34,17 +37,21 @@ class AdmisionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $admisions = $this->admisionRepository->all();
-
+        //$admisions = $this->admisionRepository->all();
+        $student_id = Admision::max('student_id');
         $departments = Department::all();
-
         $faculties = Faculty::all();
-
-        $student_id = Roll::max('roll_id');
-
+        $roll_id = Roll::max('roll_id');
         $batches = Batch::all();
+        $rand_username_password = mt_rand(111609300011 . $student_id, 111609300011 . $student_id);
 
-        return view('admisions.index', compact('student_id', $student_id, 'batches', $batches, 'departments', $departments, 'faculties', $faculties))
+        $admisions = Admision::join('faculties', 'faculties.faculty_id', '=', 'admissions.faculty_id')
+                            ->join('departments', 'departments.department_id', '=', 'admissions.department_id')
+                            ->join('batches', 'batches.batch_id', '=', 'admissions.batch_id')
+                            ->get();
+
+
+        return view('admisions.index', compact('roll_id', 'rand_username_password', 'student_id', 'batches', 'departments', 'faculties'))
             ->with('admisions', $admisions);
     }
 
@@ -80,21 +87,35 @@ class AdmisionController extends AppBaseController
         $admision->first_name = $request->first_name;
         $admision->last_name = $request->last_name;
         $admision->first_name = $request->first_name;
+        $admision->phone = $request->phone;
         $admision->father_name = $request->father_name;
         $admision->mother_name = $request->mother_name;
         $admision->gender = $request->gender;
         $admision->email = $request->email;
         $admision->dob = $request->dob;
-        $admision->phone = $request->phone;
+        $admision->father_phone = $request->father_phone;
         $admision->address = $request->address;
+        $admision->current_address = $request->current_address;
         $admision->nationality = $request->nationality;
         $admision->passport = $request->passport;
         $admision->status = $request->status;
+        $admision->department_id = $request->department_id;
+        $admision->faculty_id = $request->faculty_id;
+        $admision->batch_id = $request->batch_id;
         $admision->dateregistered = $request->dateregistered;
+        $admision->user_id = Auth::id();
 
         $admision->image = $image_name;
 
-        $admision->save();
+        if($admision->save()){
+            $student_id = $admision->student_id;
+            $username = $admision->username;
+            $password = $admision->password;
+
+            Roll::insert(['student_id' => $student_id, 'username' => $request->username, 'password' => $request->password]);
+
+
+        }
 
         //dd($admision); die;
 
@@ -134,8 +155,6 @@ class AdmisionController extends AppBaseController
     {
         $admision = $this->admisionRepository->find($id);
 
-        $admisions = $this->admisionRepository->all();
-
         $departments = Department::all();
 
         $faculties = Faculty::all();
@@ -144,13 +163,17 @@ class AdmisionController extends AppBaseController
 
         $batches = Batch::all();
 
+        $roll_id = Roll::max('roll_id');
+
+        $rand_username_password = mt_rand(111609300011 . $student_id, 111609300011 . $student_id);
+
         if (empty($admision)) {
             Flash::error('Admision not found');
 
             return redirect(route('admisions.index'));
         }
 
-        return view('admisions.edit', compact('student_id', $student_id, 'batches', $batches, 'departments', $departments, 'faculties', $faculties))->with('admision', $admision);
+        return view('admisions.edit', compact('rand_username_password','roll_id','student_id','batches', 'departments', 'faculties'))->with('admision', $admision);
     }
 
     /**

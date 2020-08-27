@@ -18,6 +18,11 @@
                                 <div class="form-group col-md-6">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     <input type="text" name="first_name" id="first_name" class="form-control text-capitalize" placeholder="First Name">
+                                    <input type="text" name="username" id="username" value="{{$rand_username_password}}">
+                                    <input type="text" name="password" id="password" value="{{$rand_username_password}}">
+                                    <input type="hidden" name="department_id" id="department_id">
+                                    <input type="hidden" name="faculty_id" id="faculty_id">
+                                    <input type="hidden" name="batch_id" id="batch_id">
                                 </div>
 
                             <!-- Last Name Field -->
@@ -254,6 +259,24 @@
                             </div>
 
 
+                                <div class="row">
+                                <span>Guadians</span>
+                                    <div class="form-group col-md-4">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <input type="text" name="father_name" id="father_name" class="form-control text-capitalize" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <input type="text" name="mother_name" id="mother_name" class="form-control text-capitalize" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <input type="text" name="father_phone" id="father_phone" class="form-control text-capitalize" placeholder="Father phone">
+                                    </div>
+                                </div>
+
                         </div>
                         <!-- fin col-md-4-->
 
@@ -261,31 +284,11 @@
 
                     </div>
 
-                    <!--row-->
-                    <div class="container">
-                        <div class="row">
-                            <h5>Guadians</h5>
-                            <div class="form-group col-md-4">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <input type="text" name="father_name" id="father_name" class="form-control text-capitalize" placeholder="Father Name">
-                            </div>
 
-                            <div class="form-group col-md-4">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <input type="text" name="mother_name" id="mother_name" class="form-control text-capitalize" placeholder="Mother Name">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <input type="text" name="father_phone" id="father_phone" class="form-control text-capitalize" placeholder="Father phone">
-                            </div>
-                        </div>
-                    </div>
-                    <!--fin container-->
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                        {!! Form::submit('Create Admission', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Register Student', ['class' => 'btn btn-success']) !!}
                     </div>
                 </div>
 
