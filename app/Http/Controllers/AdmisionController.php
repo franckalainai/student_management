@@ -184,9 +184,45 @@ class AdmisionController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateAdmisionRequest $request)
+    public function update($id, Request $request)
     {
-        $admision = $this->admisionRepository->find($id);
+        //$admision = $this->admisionRepository->find($id);
+
+        //$admision = $this->admisionRepository->create($input);
+        $input = $request->all();
+
+        $image = $request->file('image');
+        $image_name = rand(1111, 9999) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('admissions_images'), $image_name);
+
+        $admision = array(
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'phone' => $request->phone,
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'dob' => $request->dob,
+            'father_phone' => $request->father_phone,
+            'address' => $request->address,
+            'current_address' => $request->current_address,
+            'nationality' => $request->nationality,
+            'passport' => $request->passport,
+            'status' => $request->status,
+            'department_id' => $request->department_id,
+            'faculty_id' => $request->faculty_id,
+            'batch_id' => $request->batch_id,
+            'dateregistered' => $request->dateregistered,
+            'user_id' => Auth::id(),
+
+            'image' => $image_name
+        );
+
+
+
+        var_dump($admision); die;
 
         if (empty($admision)) {
             Flash::error('Admision not found');
@@ -194,7 +230,8 @@ class AdmisionController extends AppBaseController
             return redirect(route('admisions.index'));
         }
 
-        $admision = $this->admisionRepository->update($request->all(), $id);
+        //$admision = $this->admisionRepository->update($request->all(), $id);
+        Admision::findOrFail($id)->update($admision);
 
         Flash::success('Admision updated successfully.');
 

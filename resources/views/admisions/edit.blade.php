@@ -11,8 +11,9 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($admision, ['route' => ['admisions.update', $admision->student_id], 'method' => 'patch']) !!}
-
+                   <form action="{{route('admisions.update', $admision->student_id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PATCH')
                    <div class="row">
                         <div class="col-md-8">
                                 <div class="form-group col-md-6">
@@ -35,7 +36,10 @@
                                     <select name="department_id" id="department_id" class="form-control">
                                         <option value="0" selected="true" disabled="true">Choose Department</option>
                                         @foreach($departments as $department)
-                                            <option value="{{$department->department_id}}">{{$department->department_name}}</option>
+                                            <option value="{{$department->department_id}}"
+                                                {{$department->department_id == $admision->department_id ? 'selected' : ''}}>
+                                                {{$department->department_name}}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -46,7 +50,9 @@
                                     <select name="batch_id" id="batch_id" class="form-control">
                                         <option value="0" selected="true" disabled="true">Choose Batch</option>
                                         @foreach($batches as $batch)
-                                            <option value="{{$batch->batch_id}}">{{$batch->year}}</option>
+                                            <option value="{{$batch->batch_id}}"
+                                            {{$batch->batch_id == $admision->batch_id ? 'selected' : ''}}>
+                                            {{$batch->year}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,7 +62,9 @@
                                     <select name="faculty_id" id="faculty_id" class="form-control">
                                         <option value="0" selected="true" disabled="true">Choose Faculty</option>
                                         @foreach($faculties as $faculty)
-                                            <option value="{{$faculty->faculty_id}}">{{$faculty->faculty_name}}</option>
+                                            <option value="{{$faculty->faculty_id}}"
+                                            {{$faculty->faculty_id == $admision->faculty_id ? 'selected' : ''}}>
+                                            {{$faculty->faculty_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -186,14 +194,18 @@
                                                 <tr>
                                                     <td>
                                                         <label>
-                                                            <input type="radio" name="gender" id="gender" value="0" required checked>
+                                                            <input type="radio" name="gender" id="gender" value="0" required checked
+                                                            {{$admision->gender == 0 ? 'checked' : ''}}>
+
                                                                 Male&nbsp;
                                                         </label>
                                                     </td>
 
                                                     <td>
                                                         <label>
-                                                            <input type="radio" name="gender" id="gender" value="1" required>
+                                                            <input type="radio" name="gender" id="gender" value="1" required
+                                                            {{$admision->gender == 1 ? 'checked' : ''}}>
+
                                                                 Female
                                                         </label>
                                                     </td>
@@ -208,14 +220,16 @@
                                                 <tr>
                                                     <td>
                                                         <label>
-                                                            <input type="radio" name="status" id="status" value="0" required checked>
+                                                            <input type="radio" name="status" id="status" value="0" required checked
+                                                            {{$admision->status == 0 ? 'checked' : ''}}>
                                                                 Single&nbsp;
                                                         </label>
                                                     </td>
 
                                                     <td>
                                                         <label>
-                                                            <input type="radio" name="status" id="status" value="1" requered>
+                                                            <input type="radio" name="status" id="status" value="1" requered
+                                                            {{$admision->status == 1 ? 'checked' : ''}}>
                                                                 Married
                                                         </label>
                                                     </td>
@@ -274,18 +288,14 @@
                                         <input type="text" value="{{$admision->father_phone}}" name="father_phone" id="father_phone" class="form-control text-capitalize" placeholder="Father phone">
                                     </div>
                                 </div>
-
                         </div>
-
-
-
 
                     </div>
 
                     <a href="{{ route('admisions.index') }}" class="btn btn-warning">Close</a>
                     {!! Form::submit('Update Student', ['class' => 'btn btn-info']) !!}
 
-                   {!! Form::close() !!}
+                    </form>
                </div>
            </div>
        </div>
